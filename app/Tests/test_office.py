@@ -20,11 +20,7 @@ class TestOffice(unittest.TestCase):
             "id": "78",
         }
     
-    def tearDown(self):
-        """teardown all initialized variables."""
-        with self.app.app_context():
-        offices.clear() 
-
+   
     def test_create_office(self):
         '''
         method that tests create office.
@@ -41,4 +37,7 @@ class TestOffice(unittest.TestCase):
         responses = self.client.post('/app/v1/model/Office', json = self.office)
         
         
-    
+     def tearDown(self):
+        """teardown all initialized variables."""
+        with self.app.app_context():
+        offices.clear() 

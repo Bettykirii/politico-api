@@ -1,11 +1,11 @@
 from flask import Blueprint, jsonify, request
 from app.v1.models.party_model import Createparty
 
-b_party= Blueprint("v1", __name__, url_prefix="/app/v1")
+b_v1= Blueprint("v1", __name__, url_prefix="/app/v1")
 
    
 
-@b_party.route('/parties', methods=['POST'])
+@b_v1.route('/parties', methods=['POST'])
 def create_party():
     global Createparty
         if request.method == "POST":
@@ -29,7 +29,7 @@ def create_party():
         'data': responses
     }), 201)
 
-@b_party.route('/parties', methods=['GET'])
+@b_v1.route('/parties', methods=['GET'])
 def get_parties():
     '''
     method for getting all parties
@@ -41,7 +41,7 @@ def get_parties():
         'data':all_parties
     }), 200)
 
-@b_party.route('/parties/<int:p_id>/',, methods=['FETCH'])
+@b_v1.route('/parties/<int:p_id>/',, methods=['FETCH'])
 def edit_party(id):
     '''
     method for editing a party
@@ -57,7 +57,7 @@ def edit_party(id):
             "message": "updated party details",
             "status": 202
         }), 202)
-@b_party.route('/parties/<int:p_id>/', methods=['DELETE'])
+@b_v1.route('/parties/<int:p_id>/', methods=['DELETE'])
 def delete_party(p_id):
     '''
     method for deleting party by id
@@ -68,7 +68,7 @@ def delete_party(p_id):
         'message': 'successfully deleted'
     }), 202)
 
-@b_party.route('/parties/<int:p_id>', methods=['GET'])
+@b_v1.route('/parties/<int:p_id>', methods=['GET'])
 def specific_party(p_id):
     '''
     method for getting a specific party
