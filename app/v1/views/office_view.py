@@ -1,45 +1,61 @@
 from flask import Blueprint, jsonify, request
-from app.v1.models.office_model import Offices
+from app.v1.models.office_model import Office
 
-app = Blueprint("v1", __name__, url_prefix="/app/v1")
+b_v1= Blueprint("v1", __name__, url_prefix="/app/v1")
 
+   
 
-@app.route("/offices", methods=["POST"])
-def offices():
-    """
-        Create a political office - POST
-    """
-    custom_response = None
-    if request.method == "POST":
-        office_reg_data = request.get_json(force=True)
-        sample_office = Offices(office_reg_data)
-        if len(office_reg_data) > 4:
-            custom_response = jsonify({
-                "status": "Bad Query",
-                "error": "More data fields than expected"
+@b_v1.route('/offices', methods=['POST'])
+def create_office():
+    global Office
+        if request.method == "POST":
+             data = request.get_json(force=True)
+             create_office = Office(officedata)
+        if not(office) 
+                return response = jsonify({
+                "status": "400",
+                "meesage": "enter valid office data"
             }), 400
-        elif len(office_reg_data) < 4:
-            custom_response = jsonify({
-                "status": "Bad Query",
-                "error": "Fewer data fields than expected"
-            }), 400
-        elif sample_office.check_for_expected_value_types() is False:
-            custom_response = jsonify({
-                "status": "Unprocessable Entity",
-                "error": "Invalid value in data field"
-            }), 422
-        elif sample_office.check_for_any_empty_fields() is False:
-            custom_response = jsonify({
-                "status": "Unprocessable Entity",
-                "error": "Empty data field"
-            }), 422
-            else:
-                custom_response = jsonify(sample_office.create_offices()), 201
+        elif len(office) < 3:
+        return response(jsonify({
+            "message": "You should have three fields",
+            "status": 400
+        }), 400)
+       
+    response = create_office(officedata)
+    return response(jsonify({
+        'message': 'Office created successfully',
+        'status': 201,
+        'data': responses
+    }), 201)
 
-    elif request.method == "GET":
-        custom_response = jsonify(Offices.get_all_offices())
+@b_v1.route('/offices', methods=['GET'])
+def get_offices():
+    '''
+    method for getting all offices
+    '''
+    all_offices = Office()get_offices()
+    return response(jsonify({
+        'message': 'list of all offices',
+        'status': 200,
+        'data':all_offices
+    }), 200)
 
-    else:
-        pass
 
-    return custom_response
+
+@b_v1.route('/offices/<int:o_id>', methods=['GET'])
+def specific_office(o_id):
+    '''
+    method for getting a specific political office
+    '''
+    specific_office = Office().get_specific_office(o_id)
+    if specific_office:
+        return response(jsonify({
+            'message': 'office id successfully retrieved',
+            'Status': 200,
+            'offices': specific_office
+        }), 200)
+    return response(jsonify({
+        'status': 404,
+        'message': 'office not found'
+    }), 404)   
