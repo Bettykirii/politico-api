@@ -4,13 +4,13 @@ import time
 class Createparty():
     """This class represents the createparty table."""
 
-   def __init__(self, partydata):
+    def __init__(self, partydata):
         self.partydata = partydata
 
     def create_party(self):
         """ Validate, append, return custom message """
         global Createparty
-        def get_parties(self):
+    def get_parties(self):
         return self.all_parties
 
     def create_party(self, name, hqAddress, logoUrl):

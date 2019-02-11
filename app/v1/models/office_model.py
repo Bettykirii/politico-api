@@ -7,7 +7,7 @@ class Office():
 
     def __init__(self, partydata):
         self.partydata = partydata
-def get_offices(self):
+    def get_offices(self):
         return self.all_offices
 
     def create_office(self, office_type, office_name):
@@ -24,7 +24,10 @@ def get_offices(self):
         }
 
         self.all_offices.append(new_office)
-        return self.all_offices
+        return make_response(jsonify({
+        "status": 201,
+        "data": [new_office]
+    }), 201)
 
     def get_specific_office(self, office_id):
         '''

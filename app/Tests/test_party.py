@@ -1,13 +1,14 @@
 import unittest # Importing the unittest module
 import json
 from app import create_app
-from app.api.version1.models.party_models import Party, parties # Importing the Office class
+from app.v1.models.party_model   import Createparty # Importing the Office class
 
 
-class TestParty(unittest.TestCase):
+class TestCreateparty(unittest.TestCase):
     """This class represents the office test case"""
     def setUp(self):
-         """Define test variables and initialize app."""
+        """Define test variables and initialize app."""
+
     self.app = create_app('testing')
     self.client = self.app.test_client()
        
@@ -35,8 +36,11 @@ class TestParty(unittest.TestCase):
 
     def test_get_parties(self):
         responses = self.client.post('/app/v1/models/parties', json = self.office)
+
     def tearDown(self):
-        """teardown all initialized variables."""
-        with self.app.app_context():
-        parties.clear() 
+        self.app.testing=False    
+    # def tearDown(self):
+    #     """teardown all initialized variables."""
+    #     with self.app.app_context():
+    #     parties.clear() 
     
