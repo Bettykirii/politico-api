@@ -35,12 +35,12 @@ class TestOffice(unittest.TestCase):
         self.assertEqual(responses.status_code,404)
        
     def test_get_offices(self):
-         self.client.post(path='/app/v1/models/offices', data=self.create_party,content_type='application/json')
+         self.client.post(path='/app/v1/models/offices', data=self.create_office,content_type='application/json')
          re=self.client.get(path='/app/v1/models/offices',content_type='application/json')
          self.assertEqual(re.status_code,404)
 
     def test_get_specific_party(self):
-        self.client.post(path='/app/v1/models/offices', data=self.create_party,content_type='application/json')
+        self.client.post(path='/app/v1/models/offices', data=self.create_office,content_type='application/json')
         re=self.client.get(path='/app/v1/models/offices/2',content_type='application/json')
         self.assertEqual(re.status_code,404)
 

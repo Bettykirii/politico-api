@@ -12,7 +12,7 @@ class Office():
     def get_offices(self):
         return self.all_offices
 
-    def create_office(self, office_type, office_name):
+    def create_office(self, id,office_type, office_name):
         '''
          Args:
             name: New office name.
