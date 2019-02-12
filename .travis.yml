@@ -1,14 +1,10 @@
 language: python
-
 python:
   - "3.6"
-
+cache: pip
 install:
-  - pip freeze > requirements.txt
-
-
+  - pip install -r requirements.txt
 script:
-  - python pytest --cov=app
-
+  - pytest --cov=app/v1
 after_success:
   - coveralls
