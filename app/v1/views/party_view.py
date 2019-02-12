@@ -7,6 +7,9 @@ b_v1= Blueprint("v1", __name__, url_prefix="/app/v1")
 
 @b_v1.route('/parties', methods=['POST'])
 def create_party():
+    '''
+    method for getting all parties
+    '''
     json_data=request.get_json(force=True)
     party_id=len(parties)+1
     
@@ -29,24 +32,7 @@ def create_party():
         })
     
 
-    '''
-    method for getting all parties
-    '''
-    # global Createparty
-    # party = Createparty(party_data)
-    # if not party_data:
-    #     return custom_response(jsonify({
-    #         "message": "Your submission cannot be empty",
-    #         "status": 400
-    #     }), 400)
-
-    # elif(party_data):   
-    #     response = create_party(party_data)
-    #     return response(jsonify({
-    #     'message': 'Party created successfully',
-    #     'status': 201,
-    #     'data': responses
-    # }), 201)
+  
 
 @b_v1.route('/parties', methods=['GET'])
 def get_parties():

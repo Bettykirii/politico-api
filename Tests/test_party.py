@@ -38,12 +38,26 @@ class TestCreateparty(unittest.TestCase):
          self.client.post(path='/app/v1/models/parties', data=self.create_party,content_type='application/json')
          re=self.client.get(path='/app/v1/models/parties',content_type='application/json')
          self.assertEqual(re.status_code,404)
+
+    def test_get_specific_party(self):
+        self.client.post(path='/app/v1/models/parties', data=self.create_party,content_type='application/json')
+        re=self.client.get(path='/app/v1/models/parties/2',content_type='application/json')
+        self.assertEqual(re.status_code,404)
+
+    def test_edit_specific_party(self):
+        self.client.post(path='/app/v1/models/parties', data=self.create_party,content_type='application/json')
+        re=self.client.patch(path='/app/v1/models/parties/3',content_type='application/json')
+        self.assertEqual(re.status_code,404)
+
+    def test_delete_specific_party(self):
+        self.client.post(path='/app/v1/models/parties', data=self.create_party,content_type='application/json')
+        re=self.client.delete(path='/app/v1/models/parties/8',content_type='application/json')
+        self.assertEqual(re.status_code,404)   
+                  
+              
         
 
     def tearDown(self):
         self.app.testing=False    
-    # def tearDown(self):
-    #     """teardown all initialized variables."""
-    #     with self.app.app_context():
-    #     parties.clear() 
+   
     
