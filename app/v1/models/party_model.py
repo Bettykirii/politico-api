@@ -1,3 +1,4 @@
+parties=[]
 import time
 
 
@@ -13,7 +14,7 @@ class Createparty():
     def get_parties(self):
         return self.all_parties
 
-    def create_party(self, name, hqAddress, logoUrl):
+    def create_party(self,id, name, hqAddress, logoUrl):
         '''
          Args:
             name: New party name.
@@ -22,7 +23,7 @@ class Createparty():
         '''
 
         new_party = {
-            "party_id": len(self.all_parties)+1,
+            "party_id": id,
             "name": name,
             "hqAddress": hqAddress,
             "logoUrl": logoUrl

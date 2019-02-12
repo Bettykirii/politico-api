@@ -1,13 +1,14 @@
 from flask import Flask
-
+from app.v1.views.office_view import b_v1
 from instance.config import app_config
 
 def create_app(config_name):
-  app = Flask(__name__, instance_relative_config=True)
-  app.config.from_object(app_config[config_mode])
-  app.config.from_pyfile('config.py')
-  from app.v1.views import party_view,office_view
-  app.register_blueprint(party_view.b_v1,office_view.b_v1)
-  return app   
-   
-    
+
+    app = Flask(__name__)
+
+     # Creating the app configurations
+    # app.config.from_object(app_config[config_name])
+
+    #Registering the blueprint
+    app.register_blueprint(b_v1)
+    return app

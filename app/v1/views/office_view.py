@@ -7,23 +7,22 @@ b_v1= Blueprint("v1", __name__, url_prefix="/app/v1")
 
 @b_v1.route('/offices', methods=['POST'])
 def create_office():
+    '''
+    method for getting all offices
+    '''
     global Office
-        if request.method == "POST":
-             data = request.get_json(force=True)
-             create_office = Office(officedata)
-        if not(office) 
-                return response = jsonify({
-                "status": "400",
-                "meesage": "enter valid office data"
-            }), 400
-        elif len(office) < 3:
-        return response(jsonify({
-            "message": "You should have three fields",
+        
+    create_office = Office(officedata)
+    
+    if not officedata:
+        return custom_response(jsonify({
+            "message": "Your submission cannot be empty",
             "status": 400
         }), 400)
-       
-    response = create_office(officedata)
-    return response(jsonify({
+
+    elif(officedata):   
+        response = create_office(officedata)
+        return response(jsonify({
         'message': 'Office created successfully',
         'status': 201,
         'data': responses
@@ -34,7 +33,7 @@ def get_offices():
     '''
     method for getting all offices
     '''
-    all_offices = Office()get_offices()
+    all_offices = Office().get_offices()
     return response(jsonify({
         'message': 'list of all offices',
         'status': 200,

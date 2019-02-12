@@ -30,7 +30,7 @@ class ProductionConfig(Config):
     DEBUG = False
     TESTING = False
 
-
+#declaring apllication configuration for development and testing
 app_config = {
     'development': DevelopmentConfig,
     'debug': DevelopmentConfig,
