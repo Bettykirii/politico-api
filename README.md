@@ -3,7 +3,7 @@ Api endpoints for politico app.Politico app enables citizens to vote,view poll r
 
 [![Build Status](https://travis-ci.com/Bettykirii/politico-api.svg?branch=develop)](https://travis-ci.com/Bettykirii/politico-api)[![Maintainability](https://api.codeclimate.com/v1/badges/f40d762e3c56cb8f30a1/maintainability)](https://codeclimate.com/github/Bettykirii/politico-api/maintainability)[![Test Coverage](https://api.codeclimate.com/v1/badges/f40d762e3c56cb8f30a1/test_coverage)](https://codeclimate.com/github/Bettykirii/politico-api/test_coverage)[![Coverage Status](https://coveralls.io/repos/github/Bettykirii/politico-api/badge.svg?branch=master)](https://coveralls.io/github/Bettykirii/politico-api?branch=master)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f5bf7746e6424aad9feb4b6c5dd1ec74)](https://www.codacy.com/app/Bettykirii/politico-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Bettykirii/politico-api&amp;utm_campaign=Badge_Grade)
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/f40d762e3c56cb8f30a1/test_coverage)](https://codeclimate.com/github/Bettykirii/politico-api/test_coverage)
+
 
 
 # Requirements
