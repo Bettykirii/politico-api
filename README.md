@@ -15,7 +15,7 @@ Api endpoints for politico app.Politico app enables citizens to vote,view poll r
 
 * clone the repo
   * git clone  https://github.com/Bettykirii/politico-api.git
-
+v
 * cd to project directory
    * cd politico-api
 

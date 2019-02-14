@@ -1,5 +1,7 @@
-from flask import Blueprint, jsonify, request
-from app.v1.models.office_model import Office
+from flask import Blueprint, jsonify, request,make_response
+from app.v1.models.office_model import Office,offices
+import ast
+import json
 
 b_v1= Blueprint("v1", __name__, url_prefix="/app/v1")
 
@@ -10,51 +12,55 @@ def create_office():
     '''
     method for getting all offices
     '''
-    global Office
+    json_data=request.get_json(force=True)
+    id=len(offices)+1
+    if json_data:
+        office_name=json_data['name']
+        office_type=json_data['type']
         
-    create_office = Office(officedata)
-    
-    if not officedata:
-        return custom_response(jsonify({
-            "message": "Your submission cannot be empty",
-            "status": 400
-        }), 400)
+    new_office = {
+            "office_id": id,
+            "office_name": office_name,
+            "office_type": office_type,
+            
+        }
 
-    elif(officedata):   
-        response = create_office(officedata)
-        return response(jsonify({
-        'message': 'Office created successfully',
-        'status': 201,
-        'data': responses
-    }), 201)
+    offices.append(new_office)
+    return make_response(jsonify({
+            "status":201,
+            "data":[new_office]
+        }),201)
+    
 
 @b_v1.route('/offices', methods=['GET'])
 def get_offices():
     '''
     method for getting all offices
     '''
-    all_offices = Office().get_offices()
-    return response(jsonify({
+
+    
+    return make_response(jsonify({
         'message': 'list of all offices',
         'status': 200,
-        'data':all_offices
+        'data':offices
     }), 200)
 
 
+@b_v1.route('/offices/<officeID>',methods=['GET'])
+def getOffice(officeID):
+   try:
+       for office in offices:
+           print(type(office["id"]))
+           if office["id"] == int(officeID):
+               return make_response(jsonify(office), 200)
 
-@b_v1.route('/offices/<int:o_id>', methods=['GET'])
-def specific_office(o_id):
-    '''
-    method for getting a specific political office
-    '''
-    specific_office = Office().get_specific_office(o_id)
-    if specific_office:
-        return response(jsonify({
-            'message': 'office id successfully retrieved',
-            'Status': 200,
-            'offices': specific_office
-        }), 200)
-    return response(jsonify({
-        'status': 404,
-        'message': 'office not found'
-    }), 404)   
+       return make_response(jsonify({
+           "code": 404,
+           "message": "Could not find office with id {} kindly check it again".format(officeID)
+       }), 404)
+   except:
+       return jsonify({"status": 200}, {"message": "You have retrieved ID "})
+
+
+if __name__ =='__main__':
+    b.route.run(debug=True)   

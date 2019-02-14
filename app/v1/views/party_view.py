@@ -1,92 +1,100 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request,make_response
 from app.v1.models.party_model import Createparty,parties
+import ast
+import json
 
-b_v1= Blueprint("v1", __name__, url_prefix="/app/v1")
+b= Blueprint("b1", __name__, url_prefix="/app/v1")
 
    
 
-@b_v1.route('/parties', methods=['POST'])
+@b.route('/parties', methods=['POST'])
 def create_party():
     '''
     method for getting all parties
     '''
     json_data=request.get_json(force=True)
-    party_id=len(parties)+1
-    
+    id=len(parties)+1
     if json_data:
         party_name=json_data['name']
         hqAddress=json_data['hqAddress']
         logoUrl=json_data['logoUrl']
-
+        
+     
         new_party = {
             "party_id": id,
-            "name": name,
+            "party_name": party_name,
             "hqAddress": hqAddress,
-            "logoUrl": logoUrl
+            "logoUrl": logoUrl,
         }
 
         parties.append(new_party)
-        return make_response(jsonify{
+        return make_response(jsonify({
             "status":201,
             "data":[new_party]
-        })
+        }),201)
     
 
   
 
-@b_v1.route('/parties', methods=['GET'])
+@b.route('/parties', methods=['GET'])
 def get_parties():
     '''
     method for getting all parties
     '''
 
-    party_all = Createparty().get_parties()
-    return response(jsonify({
+    # party_all = Createparty().get_parties()
+    return make_response(jsonify({
         'message': 'list of all parties',
         'status': 200,
-        'data':party_all
+        'data':parties
     }), 200)
 
-@b_v1.route('/parties/<int:p_id>/',methods=['FETCH'])
-def edit_party(id):
-    '''
-    method for editing a party
-    '''
-    party_data=request.get_json()
-    if 'id' not in party_data :
-        return make_response(jsonify({
-            'message': ' invalid request',
-            'status': 400
-            }), 400)
-    elif id(party_data):
-        return response(jsonify({
-            "message": "updated party details",
-            "status": 202
-        }), 202)
-@b_v1.route('/parties/<int:p_id>/', methods=['DELETE'])
-def delete_party(p_id):
-    '''
-    method for deleting party by id
-    '''
-    Createparty().delete_party(p_id)
-    return response(jsonify({
-        'status': 'OK',
-        'message': 'successfully deleted'
-    }), 202)
+@b.route('/parties/<partyID>',methods=['GET'])
+def get_specific_party(partyID):
+   try:
+       for party in parties:
+           print(type(party["id"]))
+           if party["id"] == int(partyID):
+               return make_response(jsonify(party), 200)
 
-@b_v1.route('/parties/<int:p_id>', methods=['GET'])
-def specific_party(p_id):
-    '''
-    method for getting a specific party
-    '''
-    specific_party = Createparty().get_specific_party(p_id)
-    if specific_party:
-        return response(jsonify({
-            'message': 'party id successfully retrieved',
-            'Status': 200,
-            'parties': specific_party
-        }), 200)
-    return response(jsonify({
-        'status': 404,
-        'message': 'party not found'
-    }), 404)   
+       return make_response(jsonify({
+           "code": 404,
+           "message": "Could not find office with id {} kindly check it again".format(partyID)
+       }), 404)
+   except:
+       return jsonify({"status": 200}, {"message": "You have retrieved party ID "})
+
+@b.route('/parties/<partyID>',methods=['PATCH'])
+def edit_specific_party(partyID):
+   try:
+       for party in parties:
+           print(type(party["id"]))
+           if party["id"] == int(partyID):
+               return make_response(jsonify(party), 200)
+
+       return make_response(jsonify({
+           "code": 404,
+           "message": "Could not find office with id {} kindly check it again".format(partyID)
+       }), 404)
+   except:
+       return jsonify({"status": 200}, {"message": "You have updated succesfully party with id "})
+
+
+    
+@b.route('/parties/<partyID>',methods=['DELETE'])
+def delete_specific_party(partyID):
+   try:
+       for party in parties:
+           print(type(party["id"]))
+           if party["id"] == int(partyID):
+               return make_response(jsonify(party), 200)
+
+       return make_response(jsonify({
+           "code": 404,
+           "message": "Could not delete office with id {} kindly check it again".format(partyID)
+       }), 404)
+   except:
+       return jsonify({"status": 200}, {"message": "You have deleted succesfully party with id "})
+
+if __name__ =='__main__':
+    b.route.run(debug=True)  

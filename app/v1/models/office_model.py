@@ -6,39 +6,26 @@ import time
 
 class Office():
     """This class represents the class office."""
-
-    def __init__(self, partydata):
-        self.partydata = partydata
-    def get_offices(self):
-        return self.all_offices
-
-    def create_office(self, id,office_type, office_name):
-        '''
-         Args:
-            name: New office name.
-            type : New office type.
-        '''
+def __init__(self,id,type):
+        self.id=len(offices)+1
+        self.type=type
+        self.name=name
         
+def create_party(self):
         new_office = {
-            "office_id": len(self.all_offices)+1,
-            "office_name": office_name,
-            "office_type": office_type
-        }
-
-        self.all_offices.append(new_office)
-        return make_response(jsonify({
-        "status": 201,
-        "data": [new_office]
-    }), 201)
-
-    def get_specific_office(self, office_id):
-        '''
-            Args:
-            office_id: specific id of a office.
+            "id":self.id,
+           "type":self.type,
+           "name":self.name,
             
-        '''
-        if self.all_offices:
-            for spec_office in self.all_offices:
-                if spec_office.get('office_id') == office_id:
+        }
+        return parties.append(new_office)
+        
 
-                    return spec_office
+# def get_specific_office(self, o_id):
+#         '''
+#             Args:
+#             office_id: specific id of a office.
+            
+#         '''
+def get_all_offices(self):
+      return parties

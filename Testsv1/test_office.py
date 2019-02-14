@@ -3,7 +3,7 @@ import unittest # Importing the unittest module
 import pytest
 import json
 from app import create_app
-from app.v1.models.office_model import Office # Importing the Office class
+from app.v1.models.office_model import Office,offices # Importing the Office class
 
 
 class TestOffice(unittest.TestCase):
@@ -39,7 +39,7 @@ class TestOffice(unittest.TestCase):
          re=self.client.get(path='/app/v1/models/offices',content_type='application/json')
          self.assertEqual(re.status_code,404)
 
-    def test_get_specific_party(self):
+    def test_get_specific_office(self):
         self.client.post(path='/app/v1/models/offices', data=self.create_office,content_type='application/json')
         re=self.client.get(path='/app/v1/models/offices/2',content_type='application/json')
         self.assertEqual(re.status_code,404)
