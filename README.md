@@ -46,9 +46,12 @@ API endpoints | Function       | URL Route
 POST Parties  | Creates parties | app/v1/parties
 GET Parties   | get all parties| app/v1/parties
 GET specific party| gets a specific party by id | app/v1/parties/ int:partyID
-Edit  specific party   | get all offices| app/v1/parties
-POST Offices  | Create parties | app/v1/parties
-GET Offices id   | get all parties| app/v1/parties
+PATCH specific party   | edit specific party| app/v1/parties/int:partyID
+DELETE specific party   | delete specific party| app/v1/parties/int:partyID
+
+POST Offices  | Create parties | app/v1/offices
+GET Offices   | get all parties| app/v1/offices
+GET specific party  | get specific party| app/v1/offices/int:officeID
 
 # Acknowlegements
  * Andela bootcamp
