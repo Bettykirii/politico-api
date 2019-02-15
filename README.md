@@ -55,5 +55,6 @@ GET specific party  | get specific party| app/v1/offices/int:officeID
 
 # Acknowlegements
  * Andela bootcamp
-#Authors
+
+# Authors
  * Warware kirii
