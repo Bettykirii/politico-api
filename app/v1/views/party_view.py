@@ -42,7 +42,7 @@ def get_parties():
     method for getting all parties
     '''
 
-    # party_all = Createparty().get_parties()
+   
     return make_response(jsonify({
         'message': 'list of all parties',
         'status': 200,

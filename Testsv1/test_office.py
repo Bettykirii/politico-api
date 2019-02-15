@@ -8,6 +8,7 @@ from app.v1.models.office_model import Office,offices # Importing the Office cla
 
 class TestOffice(unittest.TestCase):
     """This class represents the office test case"""
+    
     def setUp(self):
         """Define test variables and initialize app."""
 
