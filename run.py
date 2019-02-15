@@ -6,7 +6,7 @@ config_name = os.getenv('APP_SETTINGS')
 """Gets the app settings defined in the .env file"""
 
 
-app = create_app('development')
+app = create_app('production')
 """defining the configuration to be used"""
 
 
