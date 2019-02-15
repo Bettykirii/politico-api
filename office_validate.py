@@ -4,7 +4,7 @@ b_v1= Blueprint('v1', __name__, url_prefix='/app/v1')
 import ast
 import json
 
-@b_v1.route('/home', methods=['GET'])
+@b_v1.route('/politico', methods=['GET'])
 def home():
    make_response(jsonify({
        "status": 200,
@@ -13,14 +13,14 @@ def home():
 
    }), 200)
 
-@v1.route("/offices",methods=['GET'])
-def getAllOffices():
+@b_v1.route("/offices",methods=['GET'])
+def get_all_offices():
    return make_response(jsonify(offices), 200)
 
 
-@v1.route("/offices/<officeID>",methods=['GET'])
+@b_v1.route("/offices/<officeID>",methods=['GET'])
 ## this is a method to get a specific office
-def getOffice(officeID):
+def get_offices(officeID):
    try:
        for office in offices:
            print(type(office["id"]))
@@ -37,8 +37,8 @@ def getOffice(officeID):
 
 
 
-@v1.route("/offices", methods=['POST'])
-def addOffice():
+@b_v1.route("/offices", methods=['POST'])
+def create_office():
    json_data = request.get_json(force=True)
    data=json.dumps(json_data)
    if (json_data['type'] is not "") and (json_data["name"] is not ""):
@@ -80,22 +80,22 @@ def addOffice():
 
 
 
-@v1.route("/offices/<officeID>", methods=['DELETE'])
-def deleteOffice(officeID):
-   # print(offices)
-   # print(type(officeID))
-   for office in offices:
-       if office["id"] == int(officeID):
-           offices.remove(office)
-           return make_response(jsonify({
-               "status": 200,
-               "data": "the office has been deleted successfully"
-           }), 200)
+# @v1.route("/offices/<officeID>", methods=['DELETE'])
+# def deleteOffice(officeID):
+#    # print(offices)
+#    # print(type(officeID))
+#    for office in offices:
+#        if office["id"] == int(officeID):
+#            offices.remove(office)
+#            return make_response(jsonify({
+#                "status": 200,
+#                "data": "the office has been deleted successfully"
+#            }), 200)
 
-   return make_response(jsonify({
-       "status": 404,
-       "error": "could not find office with ID {}".format(officeID)
-   }),404)
+#    return make_response(jsonify({
+#        "status": 404,
+#        "error": "could not find office with ID {}".format(officeID)
+#    }),404)
 # @v1.route('/offices/<officeID>',methods=['PATCH'])
 # def party_update(officeID):
 #     for office in offices:
@@ -124,4 +124,4 @@ def deleteOffice(officeID):
 
 
 if __name__ == "__main__":
-   v1.run(debug=True)
+   b_v1.run(debug=True)
