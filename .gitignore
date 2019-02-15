@@ -1,16 +1,26 @@
-.vscode
-__pycache__
+__pycache__/
 
-# Environments
-.env
-.venv
+.idea/
+
+
+
+
+# Distribution / packaging
+.Python
 env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+
+
+# Unit test / coverage reports
+.coverage
+.coverage.*
+.cache
+coverage.xml
+*,cover
 
 
 
-# mypy
-.mypy_cache/
+
+# dotenv
+.env
+
+.vscode
