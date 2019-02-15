@@ -45,7 +45,12 @@ API endpoints | Function       | URL Route
 ------------- | -------------  | -------------  
 POST Parties  | Creates parties | app/v1/parties
 GET Parties   | get all parties| app/v1/parties
-GET Par | Create parties | app/v1/parties p_id
-GET Offices   | get all offices| app/v1/parties
+GET specific party| gets a specific party by id | app/v1/parties/ int:partyID
+Edit  specific party   | get all offices| app/v1/parties
 POST Offices  | Create parties | app/v1/parties
 GET Offices id   | get all parties| app/v1/parties
+
+# Acknowlegements
+ * Andela bootcamp
+#Authors
+ * Warware kirii
