@@ -1,10 +1,10 @@
 from flask import make_response, jsonify, Blueprint,request
-from app.api.v1.models.models_office import offices
-v1= Blueprint('api_v1', __name__, url_prefix='/api/v1')
+from app.v1.models.office_model import offices
+b_v1= Blueprint('v1', __name__, url_prefix='/app/v1')
 import ast
 import json
 
-@v1.route('/home', methods=['GET'])
+@b_v1.route('/home', methods=['GET'])
 def home():
    make_response(jsonify({
        "status": 200,

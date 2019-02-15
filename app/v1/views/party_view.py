@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request,make_response
 from app.v1.models.party_model import Createparty,parties
-import ast
+
 import json
 
 b= Blueprint("b1", __name__, url_prefix="/app/v1")
@@ -10,7 +10,7 @@ b= Blueprint("b1", __name__, url_prefix="/app/v1")
 @b.route('/parties', methods=['POST'])
 def create_party():
     '''
-    method for getting all parties
+    method for creating all parties
     '''
     json_data=request.get_json(force=True)
     id=len(parties)+1
@@ -51,6 +51,11 @@ def get_parties():
 
 @b.route('/parties/<partyID>',methods=['GET'])
 def get_specific_party(partyID):
+     
+    '''
+    method for getting a specific party by ID 
+
+    '''
    try:
        for party in parties:
            print(type(party["id"]))
@@ -66,6 +71,9 @@ def get_specific_party(partyID):
 
 @b.route('/parties/<partyID>',methods=['PATCH'])
 def edit_specific_party(partyID):
+    '''
+    method for editing a specific party
+    '''
    try:
        for party in parties:
            print(type(party["id"]))
