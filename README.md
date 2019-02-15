@@ -11,7 +11,7 @@ Api endpoints for politico app.Politico app enables citizens to vote,view poll r
 * Python 3.6
 * Vscode
 
-* Host
+# Host
   * Heroku host https://politico-api2.herokuapp.com/app
 
 # Installation
