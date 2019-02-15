@@ -43,7 +43,7 @@ Your shell prompt will change to show the name of the activated environment.
 
 API endpoints | Function       | URL Route
 ------------- | -------------  | -------------  
-POST Parties  | Create parties | app/v1/parties
+POST Parties  | Creates parties | app/v1/parties
 GET Parties   | get all parties| app/v1/parties
 GET Par | Create parties | app/v1/parties p_id
 GET Offices   | get all offices| app/v1/parties
