@@ -52,10 +52,10 @@ def get_parties():
 @b.route('/parties/<partyID>',methods=['GET'])
 def get_specific_party(partyID):
      
-    '''
-    method for getting a specific party by ID 
+    # '''
+    # method for getting a specific party by ID 
 
-    '''
+    # '''
    try:
        for party in parties:
            print(type(party["id"]))
@@ -71,9 +71,9 @@ def get_specific_party(partyID):
 
 @b.route('/parties/<partyID>',methods=['PATCH'])
 def edit_specific_party(partyID):
-    '''
-    method for editing a specific party
-    '''
+    # '''
+    # method for editing a specific party
+    # '''
    try:
        for party in parties:
            print(type(party["id"]))

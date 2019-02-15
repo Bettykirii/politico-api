@@ -45,7 +45,7 @@ API endpoints | Function       | URL Route
 ------------- | -------------  | -------------  
 POST Parties  | Create parties | app/v1/parties
 GET Parties   | get all parties| app/v1/parties
-GET Par | Create parties | app/v1/parties<p_id>
+GET Par | Create parties | app/v1/parties p_id
 GET Offices   | get all offices| app/v1/parties
 POST Offices  | Create parties | app/v1/parties
-GET Offices<id>   | get all parties| app/v1/parties
+GET Offices id   | get all parties| app/v1/parties

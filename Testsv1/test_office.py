@@ -24,9 +24,6 @@ class TestOffice(unittest.TestCase):
             })
         
       
-    
-   
-
     def test_create_office(self):
         '''
         method that tests create office.

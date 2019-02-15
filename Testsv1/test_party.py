@@ -3,7 +3,7 @@ import unittest # Importing the unittest module
 import pytest
 import json
 from app import create_app
-from app.v1.models.party_model import Createparty # Importing the Office class
+from app.v1.models.party_model import Createparty,parties # Importing the Office class
 
 
 class TestCreateparty(unittest.TestCase):
