@@ -1,6 +1,6 @@
 """ File to run the server """
 import os
-from app import create_app
+from api import create_app
 
 config_name = os.getenv('APP_SETTINGS')
 """Gets the app settings defined in the .env file"""
