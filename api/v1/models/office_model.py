@@ -6,10 +6,10 @@ import time
 
 class Office():
     """This class represents the class office."""
-def __init__(self,id,type):
-        self.id=len(offices)+1
-        self.type=type
-        self.name=name
+def __init__(self,id,office_type,office_name):
+        self.office_id=len(offices)+1
+        self.office_type=type
+        self.office_name=name
         
 def create_party(self):
         new_office = {

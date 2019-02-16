@@ -5,7 +5,7 @@ import time
 class Createparty():
     """This class represents the createparty table."""
 
-    def __init__(self,id):
+    def __init__(self,id,party_name,hqAddress,logoUrl):
         id=len(parties)+1
         self.party_name=party_name
         self.hqAddress=hqAddress
@@ -30,7 +30,7 @@ class Createparty():
     def get_parties(self):
         return self.all_parties
 
-    def create_party(self,id, name, hqAddress, logoUrl):
+    def create_party(self,id, party_name, hqAddress, logoUrl):
        
 
        

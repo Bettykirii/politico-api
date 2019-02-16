@@ -1,7 +1,7 @@
 from flask import Flask
 import psycopg2
-from app.v1.views.office_view import b_v1
-from app.v1.views.party_view import b
+from api.v1.views.office_view import b_v1
+from api.v1.views.party_view import b
 # from app.v2.views.views_user_signup import b
 from instance.config import app_config
 

@@ -2,8 +2,8 @@ from flask import Flask,jsonify
 import unittest # Importing the unittest module
 import pytest
 import json
-from app import create_app
-from app.v1.models.office_model import Office,offices # Importing the Office class
+from api import create_app
+from api.v1.models.office_model import Office,offices # Importing the Office class
 
 
 class TestOffice(unittest.TestCase):
@@ -29,18 +29,23 @@ class TestOffice(unittest.TestCase):
         '''
         method that tests create office.
         '''
-        responses = self.client.post(path='/app/v1/models/offices', data = self.create_office,content_type='application/json')
+        responses = self.client.post(path='/app/v1/models/offices', data = self.create_office,content_type='apilication/json')
         self.assertEqual(responses.status_code,404)
        
     def test_get_offices(self):
-         self.client.post(path='/app/v1/models/offices', data=self.create_office,content_type='application/json')
-         re=self.client.get(path='/app/v1/models/offices',content_type='application/json')
+         self.client.post(path='/api/v1/models/offices', data=self.create_office,content_type='apilication/json')
+         re=self.client.get(path='/api/v1/models/offices',content_type='apilication/json')
          self.assertEqual(re.status_code,404)
 
     def test_get_specific_office(self):
-        self.client.post(path='/app/v1/models/offices', data=self.create_office,content_type='application/json')
-        re=self.client.get(path='/app/v1/models/offices/2',content_type='application/json')
+        self.client.post(path='/api/v1/models/offices', data=self.create_office,content_type='apilication/json')
+        re=self.client.get(path='/api/v1/models/offices/2',content_type='apilication/json')
         self.assertEqual(re.status_code,404)
+
+    def test_missing_id(self):
+        self.client.post(path='/api/v1/models/offices', data=self.create_office,content_type='apilication/json')
+        re=self.client.get(path='/api/v1/models/offices/5',content_type='apilication/json')
+        self.assertEqual(re.status_code,404)    
 
     
         
