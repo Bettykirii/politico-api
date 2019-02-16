@@ -44,14 +44,13 @@ Before you work on your project, activate the corresponding environment:
 venv\Scripts\activate
 Your shell prompt will change to show the name of the activated environment.
 
-API endpoints | Function       | URL Route
-------------- | -------------  | -------------  
-POST Parties  | Creates parties | app/v1/parties
-GET Parties   | get all parties| app/v1/parties
-GET specific party| gets a specific party by id | app/v1/parties/ int:partyID
-PATCH specific party   | edit specific party| app/v1/parties/int:partyID
-DELETE specific party   | delete specific party| app/v1/parties/int:partyID
-
+API endpoints       | Function             | URL Route
+-------------       | -------------        |  -------------  
+POST Parties        | Creates parties      | app/v1/parties
+GET Parties         | get all parties      | app/v1/parties
+GET specific party  | gets a specific party by id | app/v1/parties/ int:partyID
+PATCH specific party| edit specific party   | app/v1/parties/int:partyID
+DELETE specific party| delete specific party| app/v1/parties/int:partyID
 POST Offices  | Create parties | app/v1/offices
 GET Offices   | get all parties| app/v1/offices
 GET specific party  | get specific party| app/v1/offices/int:officeID
